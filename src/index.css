@@ -512,15 +512,43 @@ body.light-theme .app-navbar {
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 0.4rem 0.8rem;
+  padding: 0.42rem 2.2rem 0.42rem 0.8rem;
   font-size: 0.85rem;
   outline: none;
   cursor: pointer;
   transition: var(--transition-fast);
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 13px 13px;
 }
 
 .select-custom:focus {
   border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px var(--accent-cyan-glow);
+}
+
+/* Service dropdown: compact on desktop so it doesn't stretch or break layout */
+.service-select,
+.search-controls-bar .select-custom {
+  width: 180px;
+  max-width: 220px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.service-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
 }
 
 .mode-toggle-group {
@@ -1242,6 +1270,26 @@ body.light-theme .app-navbar {
   .search-controls-bar {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.85rem;
+  }
+  .service-filter-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .service-select,
+  .search-controls-bar .select-custom {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .search-controls-bar .filter-group:last-child {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   .result-card-top {
     flex-direction: column;
@@ -1252,5 +1300,20 @@ body.light-theme .app-navbar {
   }
   .stats-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-controls-bar .filter-group:last-child {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+  .mode-toggle-group {
+    width: 100%;
+  }
+  .mode-pill {
+    flex: 1;
+    text-align: center;
   }
 }

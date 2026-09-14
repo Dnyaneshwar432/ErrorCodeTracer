@@ -221,15 +221,16 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         {/* Controls Bar: Mode Toggle & Microservice Filter */}
         <div className="search-controls-bar">
           {/* Microservice Filter */}
-          <div className="filter-group">
+          <div className="filter-group service-filter-group">
             <Filter size={15} color="var(--text-secondary)" />
             <label className="filter-label" htmlFor="microservice-filter-select">
               Service:
             </label>
             <select
               id="microservice-filter-select"
-              className="select-custom"
+              className="select-custom service-select"
               value={selectedMs}
+              title={selectedMs === 'all' ? 'All Microservices' : `Filter by: ${selectedMs}`}
               onChange={(e) => {
                 const newMs = e.target.value;
                 setSelectedMs(newMs);
@@ -240,7 +241,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             >
               <option value="all">All Microservices</option>
               {microservices.map((ms) => (
-                <option key={ms} value={ms}>
+                <option key={ms} value={ms} title={ms}>
                   {ms}
                 </option>
               ))}
