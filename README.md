@@ -102,3 +102,18 @@ npm run dev
 ```
 
 Visit: `http://127.0.0.1:5173/`
+
+
+
+What if you want to update the file for everyone?
+If you as the owner want to update the default dataset for all visitors globally:
+
+Replace the file at 
+
+public/sample_errors.xlsx
+ with your new Excel file.
+Commit and push to GitHub:
+bash
+git add public/sample_errors.xlsx
+git commit -m "Update default error dataset"
+git push
